@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Infaq — Absensi Santri</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/infaq.css" />
+  <link rel="stylesheet" href="css/scan.css" />
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- ===== HEADER ===== -->
+    <header class="iq-header">
+      <button class="iq-header-back" onclick="history.back()" aria-label="Kembali">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <h1 class="iq-header-title">Infaq</h1>
+    </header>
+
+    <!-- ===== SUMMARY HERO CARD ===== -->
+    <div class="iq-hero">
+      <span class="iq-hero-label">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2.5"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg>
+        Total Terkumpul
+      </span>
+      <div class="iq-hero-amount">Rp 2.450.000</div>
+      <div class="iq-hero-stats">
+        <div class="iq-hero-stat">
+          <span class="iq-hero-stat-value">Rp 850.000</span>
+          <span class="iq-hero-stat-label">Bulan Ini</span>
+        </div>
+        <div class="iq-hero-stat">
+          <span class="iq-hero-stat-value">Rp 225.000</span>
+          <span class="iq-hero-stat-label">Minggu Ini</span>
+        </div>
+        <div class="iq-hero-stat">
+          <span class="iq-hero-stat-value">24</span>
+          <span class="iq-hero-stat-label">Transaksi</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== MONTH FILTER ===== -->
+    <div class="iq-filter-wrap">
+      <div class="iq-filters">
+        <button class="iq-filter active" data-month="semua">Semua</button>
+        <button class="iq-filter" data-month="jan">Januari</button>
+        <button class="iq-filter" data-month="feb">Februari</button>
+        <button class="iq-filter" data-month="mar">Maret</button>
+        <button class="iq-filter" data-month="apr">April</button>
+        <button class="iq-filter" data-month="mei">Mei</button>
+        <button class="iq-filter" data-month="jun">Juni</button>
+      </div>
+    </div>
+
+    <!-- ===== SECTION HEADER ===== -->
+    <div class="iq-section-header">
+      <h2 class="iq-section-title">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Riwayat Transaksi
+      </h2>
+      <span class="iq-section-count" id="txCount">24 transaksi</span>
+    </div>
+
+    <!-- ===== TRANSACTION LIST ===== -->
+    <div class="iq-list" id="infaqList">
+
+      <!-- Transaction 1 -->
+      <div class="iq-card" data-month="feb">
+        <div class="iq-avatar" style="background: linear-gradient(135deg, #6366F1, #818CF8);">AR</div>
+        <div class="iq-info">
+          <span class="iq-name">Ahmad Ramadhan</span>
+          <span class="iq-date">12 Feb 2026</span>
+        </div>
+        <div class="iq-amount-wrap">
+          <span class="iq-amount">Rp 50.000</span>
+          <span class="iq-type iq-type-tunai">Tunai</span>
+        </div>
+      </div>
+
+      <!-- Transaction 2 -->
+      <div class="iq-card" data-month="feb">
+        <div class="iq-avatar" style="background: linear-gradient(135deg, #0D9488, #2DD4BF);">MF</div>
+        <div class="iq-info">
+          <span class="iq-name">Muhammad Fauzan</span>
+          <span class="iq-date">12 Feb 2026</span>
+        </div>
+        <div class="iq-amount-wrap">
+          <span class="iq-amount">Rp 25.000</span>
+          <span class="iq-type iq-type-transfer">Transfer</span>
+        </div>
+      </div>
+
+      <!-- Transaction 3 -->
+      <div class="iq-card" data-month="feb">
+        <div class="iq-avatar" style="background: linear-gradient(135deg, #F59E0B, #FBBF24);">AZ</div>
+        <div class="iq-info">
+          <span class="iq-name">Aisyah Zahra</span>
+          <span class="iq-date">11 Feb 2026</span>
+        </div>
+        <div class="iq-amount-wrap">
+          <span class="iq-amount">Rp 30.000</span>
+          <span class="iq-type iq-type-tunai">Tunai</span>
+        </div>
+      </div>
+
+      <!-- Transaction 4 -->
+      <div class="iq-card" data-month="feb">
+        <div class="iq-avatar" style="background: linear-gradient(135deg, #EC4899, #F472B6);">NK</div>
+        <div class="iq-info">
+          <span class="iq-name">Nur Khadijah</span>
+          <span class="iq-date">10 Feb 2026</span>
+        </div>
+        <div class="iq-amount-wrap">
+          <span class="iq-amount">Rp 100.000</span>
+          <span class="iq-type iq-type-transfer">Transfer</span>
+        </div>
+      </div>
+
+      <!-- Transaction 5 -->
+      <div class="iq-card" data-month="feb">
+        <div class="iq-avatar" style="background: linear-gradient(135deg, #8B5CF6, #A78BFA);">IA</div>
+        <div class="iq-info">
+          <span class="iq-name">Ibrahim Al-Farisi</span>
+          <span class="iq-date">09 Feb 2026</span>
+        </div>
+        <div class="iq-amount-wrap">
+          <span class="iq-amount">Rp 20.000</span>
+          <span class="iq-type iq-type-tunai">Tunai</span>
+        </div>
+      </div>
+
+      <!-- Transaction 6 -->
+      <div class="iq-card" data-month="jan">
+        <div class="iq-avatar" style="background: linear-gradient(135deg, #EF4444, #F87171);">HM</div>
+        <div class="iq-info">
+          <span class="iq-name">Hafidz Mubarok</span>
+          <span class="iq-date">28 Jan 2026</span>
+        </div>
+        <div class="iq-amount-wrap">
+          <span class="iq-amount">Rp 75.000</span>
+          <span class="iq-type iq-type-transfer">Transfer</span>
+        </div>
+      </div>
+
+      <!-- Transaction 7 -->
+      <div class="iq-card" data-month="jan">
+        <div class="iq-avatar" style="background: linear-gradient(135deg, #14B8A6, #5EEAD4);">SR</div>
+        <div class="iq-info">
+          <span class="iq-name">Siti Rahmawati</span>
+          <span class="iq-date">25 Jan 2026</span>
+        </div>
+        <div class="iq-amount-wrap">
+          <span class="iq-amount">Rp 50.000</span>
+          <span class="iq-type iq-type-tunai">Tunai</span>
+        </div>
+      </div>
+
+      <!-- Transaction 8 -->
+      <div class="iq-card" data-month="jan">
+        <div class="iq-avatar" style="background: linear-gradient(135deg, #D946EF, #E879F9);">YH</div>
+        <div class="iq-info">
+          <span class="iq-name">Yusuf Hakim</span>
+          <span class="iq-date">22 Jan 2026</span>
+        </div>
+        <div class="iq-amount-wrap">
+          <span class="iq-amount">Rp 40.000</span>
+          <span class="iq-type iq-type-tunai">Tunai</span>
+        </div>
+      </div>
+
+      <!-- Transaction 9 -->
+      <div class="iq-card" data-month="jan">
+        <div class="iq-avatar" style="background: linear-gradient(135deg, #0EA5E9, #38BDF8);">FA</div>
+        <div class="iq-info">
+          <span class="iq-name">Fatimah Azzahra</span>
+          <span class="iq-date">20 Jan 2026</span>
+        </div>
+        <div class="iq-amount-wrap">
+          <span class="iq-amount">Rp 60.000</span>
+          <span class="iq-type iq-type-transfer">Transfer</span>
+        </div>
+      </div>
+
+      <!-- Transaction 10 -->
+      <div class="iq-card" data-month="jan">
+        <div class="iq-avatar" style="background: linear-gradient(135deg, #84CC16, #A3E635);">BH</div>
+        <div class="iq-info">
+          <span class="iq-name">Bilal Husain</span>
+          <span class="iq-date">18 Jan 2026</span>
+        </div>
+        <div class="iq-amount-wrap">
+          <span class="iq-amount">Rp 35.000</span>
+          <span class="iq-type iq-type-tunai">Tunai</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ===== EMPTY STATE ===== -->
+    <div class="iq-empty" id="emptyState" style="display: none;">
+      <div class="iq-empty-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2.5"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg>
+      </div>
+      <p class="iq-empty-text">Belum ada data infaq</p>
+      <p class="iq-empty-sub">Data infaq bulan ini belum tersedia</p>
+    </div>
+
+    <!-- ===== BOTTOM NAVIGATION ===== -->
+    <nav class="bottom-nav">
+      <a href="dashboard.html" class="nav-tab">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+        <span class="nav-tab-label">Beranda</span>
+      </a>
+      <a href="presensi.html" class="nav-tab active">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14l2 2l4-4"/></svg>
+        <span class="nav-tab-label">Presensi</span>
+      </a>
+      <!-- Scan QR -->
+      <div class="nav-qr-wrap">
+        <a href="#" class="nav-qr-btn" aria-label="Scan QR Code">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect x="2" y="2" width="8" height="8" rx="1"/><rect x="14" y="2" width="8" height="8" rx="1"/><rect x="2" y="14" width="8" height="8" rx="1"/><path d="M14 14h2v2h-2z"/><path d="M20 14h2v2h-2z"/><path d="M14 20h2v2h-2z"/><path d="M20 20h2v2h-2z"/><path d="M17 17h2v2h-2z"/></svg>
+        </a>
+        <span class="nav-qr-label">Scan</span>
+      </div>
+      <a href="pengumuman.html" class="nav-tab">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+        <span class="nav-tab-label">Pengumuman</span>
+      </a>
+      <a href="akun.html" class="nav-tab">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+        <span class="nav-tab-label">Akun</span>
+      </a>
+    </nav>
+
+  </div>
+
+  <script src="js/attendance-store.js"></script>
+  <script src="js/infaq.js"></script>
+  <script src="js/scan.js"></script>
+</body>
+</html>

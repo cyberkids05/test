@@ -1,0 +1,458 @@
+/* ============================================
+   Absensi Santri - Absensi (Attendance) Page
+   Attendance marking with date nav & student list
+   ============================================ */
+
+/* ============================================
+   Header
+   ============================================ */
+
+.ab-header {
+  height: 56px;
+  background: #1B2838;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--space-4);
+  gap: var(--space-3);
+}
+
+.ab-header-back {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  color: var(--color-text-white);
+  transition: background var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.ab-header-back:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.ab-header-back svg {
+  width: 22px;
+  height: 22px;
+}
+
+.ab-header-title {
+  flex: 1;
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-text-white);
+}
+
+/* ============================================
+   Date Navigator
+   ============================================ */
+
+.ab-date-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: var(--space-4) var(--space-4) 0;
+  background: var(--color-bg-white);
+  border-radius: var(--radius-xl);
+  padding: var(--space-3) var(--space-4);
+  box-shadow: var(--shadow-sm);
+}
+
+.ab-date-btn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-input);
+  border: none;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.ab-date-btn:hover {
+  background: var(--color-primary-lightest);
+  color: var(--color-primary);
+}
+
+.ab-date-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.ab-date-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+}
+
+.ab-date-main {
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.ab-date-sub {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+/* ============================================
+   Filter Selectors
+   ============================================ */
+
+.ab-selectors {
+  display: flex;
+  gap: var(--space-3);
+  margin: var(--space-3) var(--space-4) 0;
+}
+
+.ab-select-wrap {
+  flex: 1;
+  position: relative;
+}
+
+.ab-select {
+  width: 100%;
+  height: 42px;
+  padding: 0 var(--space-8) 0 var(--space-3);
+  background: var(--color-bg-white);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text-primary);
+  outline: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.ab-select:focus {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-input-focus);
+}
+
+.ab-select-arrow {
+  position: absolute;
+  right: var(--space-3);
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--color-text-muted);
+}
+
+.ab-select-arrow svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ============================================
+   Stats Summary
+   ============================================ */
+
+.ab-stats {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: var(--space-3) var(--space-4) 0;
+  background: var(--color-bg-white);
+  border-radius: var(--radius-xl);
+  padding: var(--space-3) var(--space-2);
+  box-shadow: var(--shadow-sm);
+}
+
+.ab-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+}
+
+.ab-stat-count {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.ab-stat-count.hadir { color: #22C55E; }
+.ab-stat-count.izin { color: #94A3B8; }
+.ab-stat-count.sakit { color: #14B8A6; }
+.ab-stat-count.alpha { color: #F97316; }
+
+.ab-stat-label {
+  font-family: var(--font-body);
+  font-size: 0.625rem;
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+
+/* ============================================
+   Student Attendance List
+   ============================================ */
+
+.ab-list {
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* ============================================
+   Attendance Card
+   ============================================ */
+
+.ab-card {
+  background: var(--color-bg-white);
+  border-radius: var(--radius-xl);
+  padding: var(--space-3) var(--space-4);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal);
+  border: 1.5px solid transparent;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: ab-card-in 0.35s ease forwards;
+}
+
+.ab-card:nth-child(1) { animation-delay: 0.03s; }
+.ab-card:nth-child(2) { animation-delay: 0.06s; }
+.ab-card:nth-child(3) { animation-delay: 0.09s; }
+.ab-card:nth-child(4) { animation-delay: 0.12s; }
+.ab-card:nth-child(5) { animation-delay: 0.15s; }
+.ab-card:nth-child(6) { animation-delay: 0.18s; }
+.ab-card:nth-child(7) { animation-delay: 0.21s; }
+.ab-card:nth-child(8) { animation-delay: 0.24s; }
+
+@keyframes ab-card-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Number badge */
+.ab-num {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  border-radius: var(--radius-full);
+  background: var(--color-bg-input);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+/* Student info */
+.ab-student {
+  flex: 1;
+  min-width: 0;
+}
+
+.ab-student-name {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ab-student-nis {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+/* Status buttons */
+.ab-status-group {
+  display: flex;
+  gap: var(--space-1);
+  flex-shrink: 0;
+}
+
+.ab-status-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--color-border);
+  background: var(--color-bg-white);
+  font-family: var(--font-heading);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+}
+
+.ab-status-btn:hover {
+  transform: scale(1.08);
+}
+
+.ab-status-btn.active-h {
+  background: #DCFCE7;
+  color: #16A34A;
+  border-color: #86EFAC;
+}
+
+.ab-status-btn.active-i {
+  background: #E2E8F0;
+  color: #475569;
+  border-color: #94A3B8;
+}
+
+.ab-status-btn.active-s {
+  background: #CCFBF1;
+  color: #0D9488;
+  border-color: #5EEAD4;
+}
+
+.ab-status-btn.active-a {
+  background: #FFF7ED;
+  color: #EA580C;
+  border-color: #FDBA74;
+}
+
+/* ============================================
+   Submit Button
+   ============================================ */
+
+.ab-submit-wrap {
+  padding: 0 var(--space-4) var(--space-4);
+}
+
+.ab-submit {
+  width: 100%;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: var(--color-text-white);
+  border: none;
+  border-radius: var(--radius-xl);
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.ab-submit::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  transition: left 0.5s ease;
+}
+
+.ab-submit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(13, 148, 136, 0.35);
+}
+
+.ab-submit:hover::before {
+  left: 100%;
+}
+
+.ab-submit:active {
+  transform: translateY(0);
+}
+
+.ab-submit svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ============================================
+   Toast
+   ============================================ */
+
+.ab-toast {
+  position: fixed;
+  top: var(--space-4);
+  left: 50%;
+  transform: translateX(-50%) translateY(-120%);
+  padding: var(--space-3) var(--space-5);
+  background: var(--color-success-bg);
+  border: 1px solid var(--color-success);
+  border-radius: var(--radius-full);
+  color: var(--color-success);
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  box-shadow: var(--shadow-lg);
+  z-index: 100;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  white-space: nowrap;
+  max-width: calc(100% - var(--space-8));
+}
+
+.ab-toast.visible {
+  transform: translateX(-50%) translateY(0);
+}
+
+.ab-toast svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   Desktop Enhancement
+   ============================================ */
+
+@media (min-width: 481px) {
+  body {
+    background: #E2E8F0;
+  }
+
+  .app-container {
+    margin-top: 0;
+    border-radius: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .app-container {
+    margin-top: var(--space-6);
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+    min-height: calc(100vh - var(--space-12));
+  }
+}

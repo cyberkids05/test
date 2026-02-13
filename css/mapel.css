@@ -1,0 +1,365 @@
+/* ============================================
+   Absensi Santri - Mata Pelajaran Page
+   Subject listing with day-based filtering
+   ============================================ */
+
+/* ============================================
+   Header
+   ============================================ */
+
+.mp-header {
+  height: 56px;
+  background: #1B2838;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--space-4);
+  gap: var(--space-3);
+}
+
+.mp-header-back {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  color: var(--color-text-white);
+  transition: background var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.mp-header-back:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.mp-header-back svg {
+  width: 22px;
+  height: 22px;
+}
+
+.mp-header-title {
+  flex: 1;
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-text-white);
+}
+
+/* ============================================
+   Stats Summary
+   ============================================ */
+
+.mp-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin: var(--space-4) var(--space-4) 0;
+  background: var(--color-bg-white);
+  border-radius: var(--radius-xl);
+  padding: var(--space-4) var(--space-2);
+  box-shadow: var(--shadow-sm);
+}
+
+.mp-stat-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.mp-stat-number {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-primary);
+}
+
+.mp-stat-number.accent {
+  color: var(--color-accent);
+}
+
+.mp-stat-label {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+
+.mp-stat-divider {
+  width: 1px;
+  height: 32px;
+  background: var(--color-border);
+  flex-shrink: 0;
+}
+
+/* ============================================
+   Day Filter Tabs
+   ============================================ */
+
+.mp-filter-wrap {
+  padding: var(--space-4) var(--space-4) 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.mp-filter-wrap::-webkit-scrollbar {
+  display: none;
+}
+
+.mp-filters {
+  display: flex;
+  gap: var(--space-2);
+  min-width: max-content;
+}
+
+.mp-filter {
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--color-border);
+  background: var(--color-bg-white);
+  color: var(--color-text-secondary);
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.mp-filter:hover {
+  border-color: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+.mp-filter.active {
+  background: var(--color-primary);
+  color: var(--color-text-white);
+  border-color: var(--color-primary);
+}
+
+/* ============================================
+   Subject List
+   ============================================ */
+
+.mp-list {
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* ============================================
+   Subject Card
+   ============================================ */
+
+.mp-card {
+  background: var(--color-bg-white);
+  border-radius: var(--radius-xl);
+  padding: var(--space-4);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal);
+  position: relative;
+  border: 1.5px solid transparent;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: mp-card-in 0.35s ease forwards;
+}
+
+.mp-card:nth-child(1) { animation-delay: 0.03s; }
+.mp-card:nth-child(2) { animation-delay: 0.06s; }
+.mp-card:nth-child(3) { animation-delay: 0.09s; }
+.mp-card:nth-child(4) { animation-delay: 0.12s; }
+.mp-card:nth-child(5) { animation-delay: 0.15s; }
+.mp-card:nth-child(6) { animation-delay: 0.18s; }
+.mp-card:nth-child(7) { animation-delay: 0.21s; }
+.mp-card:nth-child(8) { animation-delay: 0.24s; }
+
+@keyframes mp-card-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mp-card:hover {
+  border-color: var(--color-primary-light);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+/* Color indicator */
+.mp-color-dot {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.mp-color-dot svg {
+  width: 22px;
+  height: 22px;
+  color: var(--color-text-white);
+}
+
+.mp-color-fiqh { background: linear-gradient(135deg, #6366F1, #818CF8); }
+.mp-color-nahwu { background: linear-gradient(135deg, #F59E0B, #FBBF24); }
+.mp-color-hadits { background: linear-gradient(135deg, #10B981, #34D399); }
+.mp-color-tahfidz { background: linear-gradient(135deg, #0D9488, #2DD4BF); }
+.mp-color-aqidah { background: linear-gradient(135deg, #EC4899, #F472B6); }
+.mp-color-tafsir { background: linear-gradient(135deg, #8B5CF6, #A78BFA); }
+.mp-color-arab { background: linear-gradient(135deg, #0EA5E9, #38BDF8); }
+.mp-color-sirah { background: linear-gradient(135deg, #EF4444, #F87171); }
+
+/* Subject info */
+.mp-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.mp-subject {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+
+.mp-teacher {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.mp-teacher svg {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+}
+
+.mp-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.mp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-full);
+  font-family: var(--font-heading);
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.mp-badge svg {
+  width: 10px;
+  height: 10px;
+}
+
+.mp-badge-time {
+  background: var(--color-primary-lightest);
+  color: var(--color-primary);
+}
+
+.mp-badge-class {
+  background: #EFF6FF;
+  color: #3B82F6;
+}
+
+.mp-badge-day {
+  background: #FFFBEB;
+  color: #D97706;
+}
+
+/* ============================================
+   Empty State
+   ============================================ */
+
+.mp-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-12) var(--space-5);
+}
+
+.mp-empty-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-full);
+  background: var(--color-bg-input);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-4);
+  color: var(--color-text-muted);
+}
+
+.mp-empty-icon svg {
+  width: 36px;
+  height: 36px;
+}
+
+.mp-empty-text {
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-1);
+}
+
+.mp-empty-sub {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+/* ============================================
+   Desktop Enhancement
+   ============================================ */
+
+@media (min-width: 481px) {
+  body {
+    background: #E2E8F0;
+  }
+
+  .app-container {
+    margin-top: 0;
+    border-radius: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .app-container {
+    margin-top: var(--space-6);
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+    min-height: calc(100vh - var(--space-12));
+  }
+}

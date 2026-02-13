@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — Absensi Santri</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/scan.css" />
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- ===== TOP HEADER ===== -->
+    <header class="app-header">
+      <div class="marquee-wrapper">
+        <span class="marquee-text">Selamat Datang di Aplikasi AKAMID</span>
+      </div>
+    </header>
+
+    <!-- ===== GREETING CARD ===== -->
+    <div class="greeting-card">
+      <div class="greeting-left">
+        <div class="greeting-avatar">A</div>
+        <div class="greeting-text">
+          <span class="greeting-label">Selamat Pagi!</span>
+          <span class="greeting-name">Ahmad Ramadhan</span>
+        </div>
+      </div>
+      <button class="greeting-settings" aria-label="Pengaturan">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0a2.34 2.34 0 0 0 3.319 1.915a2.34 2.34 0 0 1 2.33 4.033a2.34 2.34 0 0 0 0 3.831a2.34 2.34 0 0 1-2.33 4.033a2.34 2.34 0 0 0-3.319 1.915a2.34 2.34 0 0 1-4.659 0a2.34 2.34 0 0 0-3.32-1.915a2.34 2.34 0 0 1-2.33-4.033a2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"/><circle cx="12" cy="12" r="3"/></svg>
+      </button>
+    </div>
+
+    <!-- ===== INFO CARD (Date + Stats) ===== -->
+    <div class="info-card">
+      <!-- Date Row -->
+      <div class="info-date-row">
+        <span class="info-date" id="currentDate"></span>
+        <span class="info-semester">Semester Ganjil</span>
+      </div>
+
+      <!-- Stats Circles -->
+      <div class="stats-row">
+        <div class="stat-item hadir">
+          <div class="stat-circle">0</div>
+          <span class="stat-item-label">Hadir</span>
+        </div>
+        <div class="stat-item izin">
+          <div class="stat-circle">0</div>
+          <span class="stat-item-label">Izin</span>
+        </div>
+        <div class="stat-item sakit">
+          <div class="stat-circle">0</div>
+          <span class="stat-item-label">Sakit</span>
+        </div>
+        <div class="stat-item alpha">
+          <div class="stat-circle">0</div>
+          <span class="stat-item-label">Alpha</span>
+        </div>
+      </div>
+
+
+    </div>
+
+
+
+    <!-- ===== JADWAL HARI INI ===== -->
+    <div class="section-card">
+      <div class="section-header">
+        <h2 class="section-title">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Jadwal Hari Ini
+        </h2>
+        <span class="section-badge" id="scheduleDay">Kamis</span>
+      </div>
+
+      <div class="schedule-list">
+        <!-- Jadwal 1 -->
+        <div class="schedule-item">
+          <div class="schedule-time">
+            <span class="time-start">07:00</span>
+            <span class="time-separator"></span>
+            <span class="time-end">08:30</span>
+          </div>
+          <div class="schedule-line">
+            <span class="schedule-dot color-fiqh"></span>
+          </div>
+          <div class="schedule-detail">
+            <span class="schedule-subject">Fiqih</span>
+            <span class="schedule-teacher">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+              Ust. Abdullah
+            </span>
+          </div>
+        </div>
+
+        <!-- Jadwal 2 -->
+        <div class="schedule-item">
+          <div class="schedule-time">
+            <span class="time-start">08:30</span>
+            <span class="time-separator"></span>
+            <span class="time-end">10:00</span>
+          </div>
+          <div class="schedule-line">
+            <span class="schedule-dot color-nahwu"></span>
+          </div>
+          <div class="schedule-detail">
+            <span class="schedule-subject">Nahwu Shorof</span>
+            <span class="schedule-teacher">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+              Ust. Mahmud
+            </span>
+          </div>
+        </div>
+
+        <!-- Jadwal 3 -->
+        <div class="schedule-item">
+          <div class="schedule-time">
+            <span class="time-start">10:15</span>
+            <span class="time-separator"></span>
+            <span class="time-end">11:45</span>
+          </div>
+          <div class="schedule-line">
+            <span class="schedule-dot color-hadits"></span>
+          </div>
+          <div class="schedule-detail">
+            <span class="schedule-subject">Hadits</span>
+            <span class="schedule-teacher">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+              Ust. Hasan
+            </span>
+          </div>
+        </div>
+
+        <!-- Jadwal 4 -->
+        <div class="schedule-item">
+          <div class="schedule-time">
+            <span class="time-start">13:00</span>
+            <span class="time-separator"></span>
+            <span class="time-end">14:30</span>
+          </div>
+          <div class="schedule-line">
+            <span class="schedule-dot color-tahfidz"></span>
+          </div>
+          <div class="schedule-detail">
+            <span class="schedule-subject">Tahfidz Al-Qur'an</span>
+            <span class="schedule-teacher">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+              Ust. Ibrahim
+            </span>
+          </div>
+        </div>
+
+        <!-- Jadwal 5 -->
+        <div class="schedule-item">
+          <div class="schedule-time">
+            <span class="time-start">15:30</span>
+            <span class="time-separator"></span>
+            <span class="time-end">17:00</span>
+          </div>
+          <div class="schedule-line">
+            <span class="schedule-dot color-aqidah"></span>
+          </div>
+          <div class="schedule-detail">
+            <span class="schedule-subject">Aqidah Akhlak</span>
+            <span class="schedule-teacher">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+              Ust. Salim
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== PENGUMUMAN TERBARU ===== -->
+    <div class="section-card">
+      <div class="section-header">
+        <h2 class="section-title">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+          Pengumuman Terbaru
+        </h2>
+        <a href="pengumuman.html" class="section-link">Lihat Semua</a>
+      </div>
+
+      <div class="news-list">
+        <!-- Pengumuman 1 -->
+        <a href="pengumuman.html" class="news-item news-penting">
+          <div class="news-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <div class="news-content">
+            <span class="news-title">Libur Nasional - Maulid Nabi Muhammad SAW</span>
+            <div class="news-meta">
+              <span class="news-badge badge-penting">Penting</span>
+              <span class="news-time">Hari ini</span>
+            </div>
+          </div>
+          <span class="news-unread-dot"></span>
+        </a>
+
+        <!-- Pengumuman 2 -->
+        <a href="pengumuman.html" class="news-item news-penting">
+          <div class="news-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <div class="news-content">
+            <span class="news-title">Jadwal Ujian Tengah Semester</span>
+            <div class="news-meta">
+              <span class="news-badge badge-penting">Penting</span>
+              <span class="news-time">Kemarin</span>
+            </div>
+          </div>
+          <span class="news-unread-dot"></span>
+        </a>
+
+        <!-- Pengumuman 3 -->
+        <a href="pengumuman.html" class="news-item news-kegiatan">
+          <div class="news-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="m9 16 2 2 4-4"/></svg>
+          </div>
+          <div class="news-content">
+            <span class="news-title">Kegiatan Ekstrakulikuler Baru</span>
+            <div class="news-meta">
+              <span class="news-badge badge-kegiatan">Kegiatan</span>
+              <span class="news-time">3 hari lalu</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- ===== BOTTOM NAVIGATION ===== -->
+    <nav class="bottom-nav">
+      <!-- Beranda (Active) -->
+      <a href="dashboard.html" class="nav-tab active">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+        <span class="nav-tab-label">Beranda</span>
+      </a>
+
+      <!-- Presensi -->
+      <a href="presensi.html" class="nav-tab">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14l2 2l4-4"/></svg>
+        <span class="nav-tab-label">Presensi</span>
+      </a>
+
+      <!-- Scan QR -->
+      <div class="nav-qr-wrap">
+        <a href="#" class="nav-qr-btn" aria-label="Scan QR Code">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect x="2" y="2" width="8" height="8" rx="1"/><rect x="14" y="2" width="8" height="8" rx="1"/><rect x="2" y="14" width="8" height="8" rx="1"/><path d="M14 14h2v2h-2z"/><path d="M20 14h2v2h-2z"/><path d="M14 20h2v2h-2z"/><path d="M20 20h2v2h-2z"/><path d="M17 17h2v2h-2z"/></svg>
+        </a>
+        <span class="nav-qr-label">Scan</span>
+      </div>
+
+      <!-- Pengumuman -->
+      <a href="pengumuman.html" class="nav-tab">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+        <span class="nav-tab-label">Pengumuman</span>
+      </a>
+
+      <!-- Akun -->
+      <a href="akun.html" class="nav-tab">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+        <span class="nav-tab-label">Akun</span>
+      </a>
+    </nav>
+
+  </div>
+
+  <script src="js/attendance-store.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/scan.js"></script>
+</body>
+</html>

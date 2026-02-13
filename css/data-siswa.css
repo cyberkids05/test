@@ -1,0 +1,713 @@
+/* ============================================
+   Absensi Santri - Data Siswa Page
+   Modern student directory with search & filters
+   ============================================ */
+
+/* ============================================
+   Header
+   ============================================ */
+
+.ds-header {
+  height: 56px;
+  background: #1B2838;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--space-4);
+  gap: var(--space-3);
+}
+
+.ds-header-back {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  color: var(--color-text-white);
+  transition: background var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.ds-header-back:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.ds-header-back svg {
+  width: 22px;
+  height: 22px;
+}
+
+.ds-header-title {
+  flex: 1;
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-text-white);
+}
+
+.ds-header-action {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  color: var(--color-text-white);
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.ds-header-action:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.ds-header-action svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ============================================
+   Search Bar
+   ============================================ */
+
+.ds-search-wrap {
+  padding: var(--space-4) var(--space-4) 0;
+}
+
+.ds-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.ds-search-icon {
+  position: absolute;
+  left: var(--space-4);
+  width: 18px;
+  height: 18px;
+  color: var(--color-text-muted);
+  pointer-events: none;
+  transition: color var(--transition-fast);
+}
+
+.ds-search-input {
+  width: 100%;
+  height: 44px;
+  padding: 0 var(--space-4) 0 calc(var(--space-4) + 18px + var(--space-3));
+  background: var(--color-bg-white);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-text-primary);
+  outline: none;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+}
+
+.ds-search-input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.ds-search-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-input-focus);
+}
+
+.ds-search:focus-within .ds-search-icon {
+  color: var(--color-primary);
+}
+
+/* ============================================
+   Stats Summary
+   ============================================ */
+
+.ds-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin: var(--space-4) var(--space-4) 0;
+  background: var(--color-bg-white);
+  border-radius: var(--radius-xl);
+  padding: var(--space-4) var(--space-2);
+  box-shadow: var(--shadow-sm);
+}
+
+.ds-stat-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.ds-stat-number {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.ds-stat-total .ds-stat-number {
+  color: var(--color-primary);
+}
+
+.ds-stat-lk .ds-stat-number {
+  color: #3B82F6;
+}
+
+.ds-stat-pr .ds-stat-number {
+  color: #EC4899;
+}
+
+.ds-stat-label {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  font-weight: 400;
+}
+
+.ds-stat-divider {
+  width: 1px;
+  height: 32px;
+  background: var(--color-border);
+  flex-shrink: 0;
+}
+
+/* ============================================
+   Filter Tabs
+   ============================================ */
+
+.ds-filter-wrap {
+  padding: var(--space-4) var(--space-4) 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.ds-filter-wrap::-webkit-scrollbar {
+  display: none;
+}
+
+.ds-filters {
+  display: flex;
+  gap: var(--space-2);
+  min-width: max-content;
+}
+
+.ds-filter {
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--color-border);
+  background: var(--color-bg-white);
+  color: var(--color-text-secondary);
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.ds-filter:hover {
+  border-color: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+.ds-filter.active {
+  background: var(--color-primary);
+  color: var(--color-text-white);
+  border-color: var(--color-primary);
+}
+
+/* ============================================
+   Student List
+   ============================================ */
+
+.ds-list {
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* ============================================
+   Student Card
+   ============================================ */
+
+.ds-card {
+  background: var(--color-bg-white);
+  border-radius: var(--radius-xl);
+  padding: var(--space-4);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  position: relative;
+  border: 1.5px solid transparent;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: ds-card-in 0.35s ease forwards;
+}
+
+.ds-card:nth-child(1) { animation-delay: 0.03s; }
+.ds-card:nth-child(2) { animation-delay: 0.06s; }
+.ds-card:nth-child(3) { animation-delay: 0.09s; }
+.ds-card:nth-child(4) { animation-delay: 0.12s; }
+.ds-card:nth-child(5) { animation-delay: 0.15s; }
+.ds-card:nth-child(6) { animation-delay: 0.18s; }
+.ds-card:nth-child(7) { animation-delay: 0.21s; }
+.ds-card:nth-child(8) { animation-delay: 0.24s; }
+.ds-card:nth-child(9) { animation-delay: 0.27s; }
+.ds-card:nth-child(10) { animation-delay: 0.30s; }
+
+@keyframes ds-card-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ds-card:hover {
+  border-color: var(--color-primary-light);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.ds-card:active {
+  transform: scale(0.99);
+}
+
+/* Avatar */
+.ds-avatar {
+  width: 46px;
+  height: 46px;
+  min-width: 46px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-text-white);
+  letter-spacing: 0.03em;
+}
+
+/* Info */
+.ds-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.ds-name {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  line-height: 1.3;
+  margin-bottom: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ds-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.ds-nis {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.ds-nis svg {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+}
+
+.ds-kelas {
+  padding: 1px var(--space-2);
+  background: var(--color-primary-lightest);
+  color: var(--color-primary);
+  border-radius: var(--radius-full);
+  font-family: var(--font-heading);
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+/* Status dot */
+.ds-status {
+  width: 10px;
+  height: 10px;
+  min-width: 10px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+.ds-status.active {
+  background: #22C55E;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.15);
+}
+
+.ds-status.inactive {
+  background: #EF4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+}
+
+/* ============================================
+   QR Code Button (per card)
+   ============================================ */
+
+.ds-qr-btn {
+  width: 34px;
+  height: 34px;
+  min-width: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-primary-lightest);
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-lg);
+  color: var(--color-primary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.ds-qr-btn:hover {
+  background: var(--color-primary);
+  color: var(--color-text-white);
+  border-color: var(--color-primary);
+  transform: scale(1.08);
+  box-shadow: 0 2px 8px rgba(13, 148, 136, 0.25);
+}
+
+.ds-qr-btn:active {
+  transform: scale(0.96);
+}
+
+.ds-qr-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ============================================
+   QR Code Modal
+   ============================================ */
+
+.qr-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-normal);
+  padding: var(--space-4);
+}
+
+.qr-modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.qr-modal {
+  background: var(--color-bg-white);
+  border-radius: var(--radius-2xl);
+  width: 100%;
+  max-width: 380px;
+  box-shadow: var(--shadow-xl);
+  transform: scale(0.92) translateY(20px);
+  transition: transform var(--transition-normal);
+  overflow: hidden;
+}
+
+.qr-modal-overlay.active .qr-modal {
+  transform: scale(1) translateY(0);
+}
+
+/* Modal Header */
+.qr-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.qr-modal-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.qr-modal-title svg {
+  color: var(--color-primary);
+}
+
+.qr-modal-close {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  border-radius: var(--radius-md);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.qr-modal-close:hover {
+  background: var(--color-bg-input);
+  color: var(--color-text-primary);
+}
+
+/* Modal Body */
+.qr-modal-body {
+  padding: var(--space-6) var(--space-5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Student Info */
+.qr-student-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  margin-bottom: var(--space-5);
+}
+
+.qr-student-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-text-white);
+  letter-spacing: 0.03em;
+  margin-bottom: var(--space-2);
+}
+
+.qr-student-name {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.qr-student-nis {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+/* QR Code Box */
+.qr-code-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.qr-code-box {
+  padding: var(--space-4);
+  background: var(--color-bg-white);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.qr-code-box img,
+.qr-code-box canvas {
+  display: block !important;
+  border-radius: var(--radius-md);
+}
+
+.qr-code-label {
+  font-family: 'Courier New', monospace;
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  background: var(--color-bg-input);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  letter-spacing: 0.05em;
+}
+
+.qr-instruction {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  max-width: 260px;
+}
+
+/* Modal Footer */
+.qr-modal-footer {
+  display: flex;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-5);
+  border-top: 1px solid var(--color-border);
+  background: var(--color-bg-light);
+}
+
+.qr-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-lg);
+  border: none;
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.qr-btn svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.qr-btn-secondary {
+  background: var(--color-bg-white);
+  color: var(--color-text-secondary);
+  border: 1.5px solid var(--color-border);
+}
+
+.qr-btn-secondary:hover {
+  background: var(--color-bg-input);
+  border-color: var(--color-text-muted);
+}
+
+.qr-btn-primary {
+  background: var(--color-primary);
+  color: var(--color-text-white);
+}
+
+.qr-btn-primary:hover {
+  background: var(--color-primary-dark);
+  box-shadow: 0 2px 8px rgba(13, 148, 136, 0.3);
+}
+
+.qr-btn-accent {
+  background: var(--color-bg-white);
+  color: var(--color-primary);
+  border: 1.5px solid var(--color-primary);
+}
+
+.qr-btn-accent:hover {
+  background: var(--color-primary-lightest);
+}
+
+/* ============================================
+   Empty State
+   ============================================ */
+
+.ds-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-12) var(--space-5);
+}
+
+.ds-empty-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-full);
+  background: var(--color-bg-input);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-4);
+  color: var(--color-text-muted);
+}
+
+.ds-empty-icon svg {
+  width: 36px;
+  height: 36px;
+}
+
+.ds-empty-text {
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-1);
+}
+
+.ds-empty-sub {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+/* ============================================
+   Desktop Enhancement
+   ============================================ */
+
+@media (min-width: 481px) {
+  body {
+    background: #E2E8F0;
+  }
+
+  .app-container {
+    margin-top: 0;
+    border-radius: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .app-container {
+    margin-top: var(--space-6);
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+    min-height: calc(100vh - var(--space-12));
+  }
+}

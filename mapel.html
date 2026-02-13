@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mata Pelajaran — Absensi Santri</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/mapel.css" />
+  <link rel="stylesheet" href="css/scan.css" />
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- ===== HEADER ===== -->
+    <header class="mp-header">
+      <button class="mp-header-back" onclick="history.back()" aria-label="Kembali">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <h1 class="mp-header-title">Mata Pelajaran</h1>
+    </header>
+
+    <!-- ===== STATS SUMMARY ===== -->
+    <div class="mp-stats">
+      <div class="mp-stat-item">
+        <span class="mp-stat-number">8</span>
+        <span class="mp-stat-label">Total Mapel</span>
+      </div>
+      <div class="mp-stat-divider"></div>
+      <div class="mp-stat-item">
+        <span class="mp-stat-number accent">32</span>
+        <span class="mp-stat-label">Jam/Minggu</span>
+      </div>
+      <div class="mp-stat-divider"></div>
+      <div class="mp-stat-item">
+        <span class="mp-stat-number">6</span>
+        <span class="mp-stat-label">Pengajar</span>
+      </div>
+    </div>
+
+    <!-- ===== DAY FILTER ===== -->
+    <div class="mp-filter-wrap">
+      <div class="mp-filters">
+        <button class="mp-filter active" data-day="semua">Semua</button>
+        <button class="mp-filter" data-day="senin">Senin</button>
+        <button class="mp-filter" data-day="selasa">Selasa</button>
+        <button class="mp-filter" data-day="rabu">Rabu</button>
+        <button class="mp-filter" data-day="kamis">Kamis</button>
+        <button class="mp-filter" data-day="jumat">Jumat</button>
+        <button class="mp-filter" data-day="sabtu">Sabtu</button>
+      </div>
+    </div>
+
+    <!-- ===== SUBJECT LIST ===== -->
+    <div class="mp-list" id="mapelList">
+
+      <!-- Fiqih -->
+      <div class="mp-card" data-day="senin kamis">
+        <div class="mp-color-dot mp-color-fiqh">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+        </div>
+        <div class="mp-info">
+          <span class="mp-subject">Fiqih</span>
+          <span class="mp-teacher">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+            Ust. Abdullah
+          </span>
+          <div class="mp-meta">
+            <span class="mp-badge mp-badge-time">
+              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              07:00 - 08:30
+            </span>
+            <span class="mp-badge mp-badge-day">Sen & Kam</span>
+            <span class="mp-badge mp-badge-class">VII-A</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nahwu Shorof -->
+      <div class="mp-card" data-day="senin rabu">
+        <div class="mp-color-dot mp-color-nahwu">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+        </div>
+        <div class="mp-info">
+          <span class="mp-subject">Nahwu Shorof</span>
+          <span class="mp-teacher">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+            Ust. Mahmud
+          </span>
+          <div class="mp-meta">
+            <span class="mp-badge mp-badge-time">
+              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              08:30 - 10:00
+            </span>
+            <span class="mp-badge mp-badge-day">Sen & Rab</span>
+            <span class="mp-badge mp-badge-class">VII-A</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hadits -->
+      <div class="mp-card" data-day="selasa kamis">
+        <div class="mp-color-dot mp-color-hadits">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+        </div>
+        <div class="mp-info">
+          <span class="mp-subject">Hadits</span>
+          <span class="mp-teacher">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+            Ust. Hasan
+          </span>
+          <div class="mp-meta">
+            <span class="mp-badge mp-badge-time">
+              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              10:15 - 11:45
+            </span>
+            <span class="mp-badge mp-badge-day">Sel & Kam</span>
+            <span class="mp-badge mp-badge-class">VII-A</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tahfidz Al-Qur'an -->
+      <div class="mp-card" data-day="senin selasa rabu kamis jumat">
+        <div class="mp-color-dot mp-color-tahfidz">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+        </div>
+        <div class="mp-info">
+          <span class="mp-subject">Tahfidz Al-Qur'an</span>
+          <span class="mp-teacher">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+            Ust. Ibrahim
+          </span>
+          <div class="mp-meta">
+            <span class="mp-badge mp-badge-time">
+              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              13:00 - 14:30
+            </span>
+            <span class="mp-badge mp-badge-day">Setiap Hari</span>
+            <span class="mp-badge mp-badge-class">Semua</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Aqidah Akhlak -->
+      <div class="mp-card" data-day="rabu jumat">
+        <div class="mp-color-dot mp-color-aqidah">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+        </div>
+        <div class="mp-info">
+          <span class="mp-subject">Aqidah Akhlak</span>
+          <span class="mp-teacher">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+            Ust. Salim
+          </span>
+          <div class="mp-meta">
+            <span class="mp-badge mp-badge-time">
+              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              15:30 - 17:00
+            </span>
+            <span class="mp-badge mp-badge-day">Rab & Jum</span>
+            <span class="mp-badge mp-badge-class">VII-A</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tafsir -->
+      <div class="mp-card" data-day="selasa sabtu">
+        <div class="mp-color-dot mp-color-tafsir">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+        </div>
+        <div class="mp-info">
+          <span class="mp-subject">Tafsir</span>
+          <span class="mp-teacher">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+            Ust. Yusuf
+          </span>
+          <div class="mp-meta">
+            <span class="mp-badge mp-badge-time">
+              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              08:30 - 10:00
+            </span>
+            <span class="mp-badge mp-badge-day">Sel & Sab</span>
+            <span class="mp-badge mp-badge-class">VIII-A</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bahasa Arab -->
+      <div class="mp-card" data-day="rabu sabtu">
+        <div class="mp-color-dot mp-color-arab">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+        </div>
+        <div class="mp-info">
+          <span class="mp-subject">Bahasa Arab</span>
+          <span class="mp-teacher">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+            Ust. Mahmud
+          </span>
+          <div class="mp-meta">
+            <span class="mp-badge mp-badge-time">
+              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              10:15 - 11:45
+            </span>
+            <span class="mp-badge mp-badge-day">Rab & Sab</span>
+            <span class="mp-badge mp-badge-class">VII-B</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sirah Nabawiyah -->
+      <div class="mp-card" data-day="jumat">
+        <div class="mp-color-dot mp-color-sirah">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+        </div>
+        <div class="mp-info">
+          <span class="mp-subject">Sirah Nabawiyah</span>
+          <span class="mp-teacher">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+            Ust. Hasan
+          </span>
+          <div class="mp-meta">
+            <span class="mp-badge mp-badge-time">
+              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              07:00 - 08:30
+            </span>
+            <span class="mp-badge mp-badge-day">Jumat</span>
+            <span class="mp-badge mp-badge-class">IX-A</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ===== EMPTY STATE ===== -->
+    <div class="mp-empty" id="emptyState" style="display: none;">
+      <div class="mp-empty-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/><line x1="9" y1="15" x2="12" y2="15"/></svg>
+      </div>
+      <p class="mp-empty-text">Tidak ada mapel di hari ini</p>
+      <p class="mp-empty-sub">Pilih hari lain untuk melihat jadwal</p>
+    </div>
+
+    <!-- ===== BOTTOM NAVIGATION ===== -->
+    <nav class="bottom-nav">
+      <a href="dashboard.html" class="nav-tab">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+        <span class="nav-tab-label">Beranda</span>
+      </a>
+      <a href="presensi.html" class="nav-tab active">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14l2 2l4-4"/></svg>
+        <span class="nav-tab-label">Presensi</span>
+      </a>
+      <!-- Scan QR -->
+      <div class="nav-qr-wrap">
+        <a href="#" class="nav-qr-btn" aria-label="Scan QR Code">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect x="2" y="2" width="8" height="8" rx="1"/><rect x="14" y="2" width="8" height="8" rx="1"/><rect x="2" y="14" width="8" height="8" rx="1"/><path d="M14 14h2v2h-2z"/><path d="M20 14h2v2h-2z"/><path d="M14 20h2v2h-2z"/><path d="M20 20h2v2h-2z"/><path d="M17 17h2v2h-2z"/></svg>
+        </a>
+        <span class="nav-qr-label">Scan</span>
+      </div>
+      <a href="pengumuman.html" class="nav-tab">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+        <span class="nav-tab-label">Pengumuman</span>
+      </a>
+      <a href="akun.html" class="nav-tab">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+        <span class="nav-tab-label">Akun</span>
+      </a>
+    </nav>
+
+  </div>
+
+  <script src="js/attendance-store.js"></script>
+  <script src="js/mapel.js"></script>
+  <script src="js/scan.js"></script>
+</body>
+</html>

@@ -1,0 +1,512 @@
+/* ============================================
+   QR Scanner Modal
+   ============================================ */
+
+/* Overlay */
+.scan-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-normal), visibility var(--transition-normal);
+}
+
+.scan-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Modal Container */
+.scan-modal {
+  background: var(--color-bg-white);
+  border-radius: var(--radius-2xl);
+  width: calc(100% - var(--space-8));
+  max-width: 400px;
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  transform: translateY(30px) scale(0.95);
+  transition: transform var(--transition-normal);
+}
+
+.scan-overlay.active .scan-modal {
+  transform: translateY(0) scale(1);
+}
+
+/* Modal Header */
+.scan-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.scan-header-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.scan-header-title svg {
+  width: 22px;
+  height: 22px;
+  color: var(--color-primary);
+}
+
+.scan-close-btn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-input);
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.scan-close-btn:hover {
+  background: var(--color-border);
+  color: var(--color-text-primary);
+}
+
+.scan-close-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Scanner Body */
+.scan-body {
+  padding: var(--space-5);
+}
+
+/* Camera viewfinder container */
+.scan-viewfinder {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: #000;
+}
+
+/* html5-qrcode overrides */
+.scan-viewfinder #scan-reader {
+  width: 100% !important;
+  border: none !important;
+}
+
+.scan-viewfinder #scan-reader video {
+  border-radius: var(--radius-xl);
+  object-fit: cover;
+}
+
+.scan-viewfinder #scan-reader img {
+  display: none;
+}
+
+/* Hide the built-in UI elements of html5-qrcode */
+#scan-reader__dashboard,
+#scan-reader__dashboard_section,
+#scan-reader__dashboard_section_csr,
+#scan-reader__dashboard_section_fsr,
+#scan-reader__dashboard_section_swaplink,
+#scan-reader__header_message,
+#scan-reader__camera_permission_button {
+  display: none !important;
+}
+
+#scan-reader__scan_region {
+  min-height: 0 !important;
+}
+
+#scan-reader__scan_region > br {
+  display: none;
+}
+
+/* Corner frame overlay */
+.scan-frame {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.scan-frame::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  height: 70%;
+  border: 2.5px solid rgba(255, 255, 255, 0.7);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.35);
+}
+
+/* Animated scan line */
+.scan-line {
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  width: 70%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+  z-index: 11;
+  animation: scan-sweep 2.5s ease-in-out infinite;
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 8px var(--color-primary);
+}
+
+@keyframes scan-sweep {
+  0%, 100% {
+    top: 15%;
+    opacity: 0.4;
+  }
+  50% {
+    top: 75%;
+    opacity: 1;
+  }
+}
+
+/* Corner accents */
+.scan-corner {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  z-index: 12;
+}
+
+.scan-corner::before,
+.scan-corner::after {
+  content: '';
+  position: absolute;
+  background: var(--color-primary);
+  border-radius: 2px;
+}
+
+.scan-corner--tl {
+  top: calc(15% - 2px);
+  left: calc(15% - 2px);
+}
+.scan-corner--tl::before { width: 24px; height: 4px; top: 0; left: 0; }
+.scan-corner--tl::after  { width: 4px; height: 24px; top: 0; left: 0; }
+
+.scan-corner--tr {
+  top: calc(15% - 2px);
+  right: calc(15% - 2px);
+}
+.scan-corner--tr::before { width: 24px; height: 4px; top: 0; right: 0; }
+.scan-corner--tr::after  { width: 4px; height: 24px; top: 0; right: 0; }
+
+.scan-corner--bl {
+  bottom: calc(15% - 2px);
+  left: calc(15% - 2px);
+}
+.scan-corner--bl::before { width: 24px; height: 4px; bottom: 0; left: 0; }
+.scan-corner--bl::after  { width: 4px; height: 24px; bottom: 0; left: 0; }
+
+.scan-corner--br {
+  bottom: calc(15% - 2px);
+  right: calc(15% - 2px);
+}
+.scan-corner--br::before { width: 24px; height: 4px; bottom: 0; right: 0; }
+.scan-corner--br::after  { width: 4px; height: 24px; bottom: 0; right: 0; }
+
+/* ============================================
+   Tabs (Kamera / Upload)
+   ============================================ */
+
+.scan-tabs {
+  display: flex;
+  background: var(--color-bg-input);
+  border-radius: var(--radius-lg);
+  padding: 3px;
+  margin-bottom: var(--space-4);
+  gap: 3px;
+}
+
+.scan-tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border: none;
+  border-radius: var(--radius-md);
+  background: transparent;
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.scan-tab svg {
+  width: 16px;
+  height: 16px;
+}
+
+.scan-tab.active {
+  background: var(--color-bg-white);
+  color: var(--color-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.scan-tab:hover:not(.active) {
+  color: var(--color-text-primary);
+}
+
+/* ============================================
+   Upload Area
+   ============================================ */
+
+.scan-upload-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius-xl);
+  background: var(--color-bg-input);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-align: center;
+  padding: var(--space-6);
+}
+
+.scan-upload-area:hover,
+.scan-upload-area.dragover {
+  border-color: var(--color-primary);
+  background: var(--color-primary-lightest);
+}
+
+.scan-upload-icon {
+  width: 72px;
+  height: 72px;
+  background: var(--color-bg-white);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  margin-bottom: var(--space-4);
+  box-shadow: var(--shadow-md);
+}
+
+.scan-upload-icon svg {
+  width: 36px;
+  height: 36px;
+}
+
+.scan-upload-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-1);
+}
+
+.scan-upload-text {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-4);
+  line-height: 1.5;
+}
+
+.scan-upload-btn {
+  width: auto;
+  flex: none;
+  padding: 0 var(--space-6);
+}
+
+/* Instruction text */
+.scan-instruction {
+  text-align: center;
+  margin-top: var(--space-4);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+/* Status messages */
+.scan-status {
+  text-align: center;
+  margin-top: var(--space-3);
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  min-height: 22px;
+  transition: color var(--transition-fast);
+}
+
+.scan-status.loading {
+  color: var(--color-primary);
+}
+
+.scan-status.error {
+  color: var(--color-error);
+}
+
+/* Result display */
+.scan-result {
+  display: none;
+  margin-top: var(--space-4);
+  padding: var(--space-4);
+  background: var(--color-success-bg);
+  border: 1px solid var(--color-success);
+  border-radius: var(--radius-lg);
+  text-align: center;
+}
+
+.scan-result.visible {
+  display: block;
+  animation: result-pop 0.3s ease;
+}
+
+@keyframes result-pop {
+  0% { transform: scale(0.9); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.scan-result-icon {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto var(--space-2);
+  background: var(--color-success);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-white);
+}
+
+.scan-result-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.scan-result-label {
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-success);
+  margin-bottom: var(--space-1);
+}
+
+.scan-result-text {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+  word-break: break-all;
+  line-height: 1.5;
+}
+
+/* Footer actions */
+.scan-footer {
+  padding: 0 var(--space-5) var(--space-5);
+  display: flex;
+  gap: var(--space-3);
+}
+
+.scan-btn {
+  flex: 1;
+  height: 44px;
+  border: none;
+  border-radius: var(--radius-lg);
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+}
+
+.scan-btn-primary {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: var(--color-text-white);
+}
+
+.scan-btn-primary:hover {
+  box-shadow: 0 4px 12px rgba(13, 148, 136, 0.35);
+}
+
+.scan-btn-secondary {
+  background: var(--color-bg-input);
+  color: var(--color-text-secondary);
+}
+
+.scan-btn-secondary:hover {
+  background: var(--color-border);
+  color: var(--color-text-primary);
+}
+
+.scan-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Camera permission state */
+.scan-permission {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  text-align: center;
+  padding: var(--space-8);
+}
+
+.scan-permission-icon {
+  width: 64px;
+  height: 64px;
+  background: var(--color-primary-lightest);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  margin-bottom: var(--space-4);
+}
+
+.scan-permission-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.scan-permission-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.scan-permission-text {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Siswa — Absensi Santri</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/data-siswa.css" />
+  <link rel="stylesheet" href="css/scan.css" />
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- ===== HEADER ===== -->
+    <header class="ds-header">
+      <button class="ds-header-back" onclick="history.back()" aria-label="Kembali">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+      </button>
+      <h1 class="ds-header-title">Data Siswa</h1>
+      <button class="ds-header-action" aria-label="Tambah Siswa" id="btnAddSiswa">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+      </button>
+    </header>
+
+    <!-- ===== SEARCH BAR ===== -->
+    <div class="ds-search-wrap">
+      <div class="ds-search">
+        <svg class="ds-search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="text" class="ds-search-input" placeholder="Cari nama atau NIS siswa..." id="searchInput" />
+      </div>
+    </div>
+
+    <!-- ===== STATS SUMMARY ===== -->
+    <div class="ds-stats">
+      <div class="ds-stat-item ds-stat-total">
+        <span class="ds-stat-number">24</span>
+        <span class="ds-stat-label">Total</span>
+      </div>
+      <div class="ds-stat-divider"></div>
+      <div class="ds-stat-item ds-stat-lk">
+        <span class="ds-stat-number">14</span>
+        <span class="ds-stat-label">Laki-laki</span>
+      </div>
+      <div class="ds-stat-divider"></div>
+      <div class="ds-stat-item ds-stat-pr">
+        <span class="ds-stat-number">10</span>
+        <span class="ds-stat-label">Perempuan</span>
+      </div>
+    </div>
+
+    <!-- ===== CLASS FILTER ===== -->
+    <div class="ds-filter-wrap">
+      <div class="ds-filters">
+        <button class="ds-filter active" data-filter="semua">Semua</button>
+        <button class="ds-filter" data-filter="7a">VII-A</button>
+        <button class="ds-filter" data-filter="7b">VII-B</button>
+        <button class="ds-filter" data-filter="8a">VIII-A</button>
+        <button class="ds-filter" data-filter="9a">IX-A</button>
+      </div>
+    </div>
+
+    <!-- ===== STUDENT LIST ===== -->
+    <div class="ds-list" id="studentList">
+
+      <!-- Student 1 -->
+      <div class="ds-card" data-kelas="7a">
+        <div class="ds-avatar" style="background: linear-gradient(135deg, #6366F1, #818CF8);">AR</div>
+        <div class="ds-info">
+          <span class="ds-name">Ahmad Ramadhan</span>
+          <div class="ds-meta">
+            <span class="ds-nis">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+              2026001
+            </span>
+            <span class="ds-kelas">VII-A</span>
+          </div>
+        </div>
+        <span class="ds-status active" title="Aktif"></span>
+      </div>
+
+      <!-- Student 2 -->
+      <div class="ds-card" data-kelas="7a">
+        <div class="ds-avatar" style="background: linear-gradient(135deg, #0D9488, #2DD4BF);">MF</div>
+        <div class="ds-info">
+          <span class="ds-name">Muhammad Fauzan</span>
+          <div class="ds-meta">
+            <span class="ds-nis">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+              2026002
+            </span>
+            <span class="ds-kelas">VII-A</span>
+          </div>
+        </div>
+        <span class="ds-status active" title="Aktif"></span>
+      </div>
+
+      <!-- Student 3 -->
+      <div class="ds-card" data-kelas="7a">
+        <div class="ds-avatar" style="background: linear-gradient(135deg, #F59E0B, #FBBF24);">AZ</div>
+        <div class="ds-info">
+          <span class="ds-name">Aisyah Zahra</span>
+          <div class="ds-meta">
+            <span class="ds-nis">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+              2026003
+            </span>
+            <span class="ds-kelas">VII-A</span>
+          </div>
+        </div>
+        <span class="ds-status active" title="Aktif"></span>
+      </div>
+
+      <!-- Student 4 -->
+      <div class="ds-card" data-kelas="7b">
+        <div class="ds-avatar" style="background: linear-gradient(135deg, #EC4899, #F472B6);">NK</div>
+        <div class="ds-info">
+          <span class="ds-name">Nur Khadijah</span>
+          <div class="ds-meta">
+            <span class="ds-nis">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+              2026004
+            </span>
+            <span class="ds-kelas">VII-B</span>
+          </div>
+        </div>
+        <span class="ds-status active" title="Aktif"></span>
+      </div>
+
+      <!-- Student 5 -->
+      <div class="ds-card" data-kelas="7b">
+        <div class="ds-avatar" style="background: linear-gradient(135deg, #8B5CF6, #A78BFA);">IA</div>
+        <div class="ds-info">
+          <span class="ds-name">Ibrahim Al-Farisi</span>
+          <div class="ds-meta">
+            <span class="ds-nis">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+              2026005
+            </span>
+            <span class="ds-kelas">VII-B</span>
+          </div>
+        </div>
+        <span class="ds-status active" title="Aktif"></span>
+      </div>
+
+      <!-- Student 6 -->
+      <div class="ds-card" data-kelas="8a">
+        <div class="ds-avatar" style="background: linear-gradient(135deg, #EF4444, #F87171);">HM</div>
+        <div class="ds-info">
+          <span class="ds-name">Hafidz Mubarok</span>
+          <div class="ds-meta">
+            <span class="ds-nis">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+              2025010
+            </span>
+            <span class="ds-kelas">VIII-A</span>
+          </div>
+        </div>
+        <span class="ds-status active" title="Aktif"></span>
+      </div>
+
+      <!-- Student 7 -->
+      <div class="ds-card" data-kelas="8a">
+        <div class="ds-avatar" style="background: linear-gradient(135deg, #14B8A6, #5EEAD4);">SR</div>
+        <div class="ds-info">
+          <span class="ds-name">Siti Rahmawati</span>
+          <div class="ds-meta">
+            <span class="ds-nis">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+              2025011
+            </span>
+            <span class="ds-kelas">VIII-A</span>
+          </div>
+        </div>
+        <span class="ds-status inactive" title="Tidak Aktif"></span>
+      </div>
+
+      <!-- Student 8 -->
+      <div class="ds-card" data-kelas="9a">
+        <div class="ds-avatar" style="background: linear-gradient(135deg, #D946EF, #E879F9);">YH</div>
+        <div class="ds-info">
+          <span class="ds-name">Yusuf Hakim</span>
+          <div class="ds-meta">
+            <span class="ds-nis">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+              2024015
+            </span>
+            <span class="ds-kelas">IX-A</span>
+          </div>
+        </div>
+        <span class="ds-status active" title="Aktif"></span>
+      </div>
+
+      <!-- Student 9 -->
+      <div class="ds-card" data-kelas="9a">
+        <div class="ds-avatar" style="background: linear-gradient(135deg, #0EA5E9, #38BDF8);">FA</div>
+        <div class="ds-info">
+          <span class="ds-name">Fatimah Azzahra</span>
+          <div class="ds-meta">
+            <span class="ds-nis">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+              2024016
+            </span>
+            <span class="ds-kelas">IX-A</span>
+          </div>
+        </div>
+        <span class="ds-status active" title="Aktif"></span>
+      </div>
+
+      <!-- Student 10 -->
+      <div class="ds-card" data-kelas="7a">
+        <div class="ds-avatar" style="background: linear-gradient(135deg, #84CC16, #A3E635);">BH</div>
+        <div class="ds-info">
+          <span class="ds-name">Bilal Husain</span>
+          <div class="ds-meta">
+            <span class="ds-nis">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+              2026006
+            </span>
+            <span class="ds-kelas">VII-A</span>
+          </div>
+        </div>
+        <span class="ds-status active" title="Aktif"></span>
+      </div>
+
+    </div>
+
+    <!-- ===== EMPTY STATE ===== -->
+    <div class="ds-empty" id="emptyState" style="display: none;">
+      <div class="ds-empty-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+      </div>
+      <p class="ds-empty-text">Siswa tidak ditemukan</p>
+      <p class="ds-empty-sub">Coba cari dengan kata kunci lain</p>
+    </div>
+
+    <!-- ===== BOTTOM NAVIGATION ===== -->
+    <nav class="bottom-nav">
+      <a href="dashboard.html" class="nav-tab">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+        <span class="nav-tab-label">Beranda</span>
+      </a>
+      <a href="presensi.html" class="nav-tab active">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14l2 2l4-4"/></svg>
+        <span class="nav-tab-label">Presensi</span>
+      </a>
+      <!-- Scan QR -->
+      <div class="nav-qr-wrap">
+        <a href="#" class="nav-qr-btn" aria-label="Scan QR Code">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect x="2" y="2" width="8" height="8" rx="1"/><rect x="14" y="2" width="8" height="8" rx="1"/><rect x="2" y="14" width="8" height="8" rx="1"/><path d="M14 14h2v2h-2z"/><path d="M20 14h2v2h-2z"/><path d="M14 20h2v2h-2z"/><path d="M20 20h2v2h-2z"/><path d="M17 17h2v2h-2z"/></svg>
+        </a>
+        <span class="nav-qr-label">Scan</span>
+      </div>
+      <a href="pengumuman.html" class="nav-tab">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+        <span class="nav-tab-label">Pengumuman</span>
+      </a>
+      <a href="akun.html" class="nav-tab">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+        <span class="nav-tab-label">Akun</span>
+      </a>
+    </nav>
+
+  </div>
+
+  <script src="js/attendance-store.js"></script>
+  <script src="js/data-siswa.js"></script>
+  <script src="js/data-siswa-qr.js"></script>
+  <script src="js/scan.js"></script>
+</body>
+</html>
